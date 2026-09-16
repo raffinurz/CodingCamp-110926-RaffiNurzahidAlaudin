@@ -1,0 +1,135 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+
+    <title>Expense & Budget Visualizer</title>
+
+    <link rel="stylesheet" href="css/style.css">
+
+    <!-- Chart.js -->
+    <script src="https://cdn.jsdelivr.net/npm/chart.js"></script>
+</head>
+
+<body>
+
+    <main class="container">
+
+        <!-- Header -->
+        <header class="header">
+            <div class="header-top">
+                <div>
+                    <h1>Expense Tracker</h1>
+                    <p>Track your daily spending easily</p>
+                </div>
+        
+                <button id="themeToggle" class="theme-btn">
+                    🌙
+                </button>
+            </div>
+        </header>
+
+        <!-- Total Balance -->
+        <section class="balance-card">
+            <p>Total Balance</p>
+            <h2 id="totalBalance">Rp 0</h2>
+        
+            <div class="limit-info">
+                <span>Spending Limit</span>
+                <span id="limitStatus">Rp 0</span>
+            </div>
+        </section>
+
+        <section class="card">
+            <h2>Spending Limit</h2>
+        
+            <div class="limit-form">
+                <input
+                    type="number"
+                    id="spendingLimit"
+                    placeholder="Set your spending limit"
+                    min="1"
+                >
+        
+                <button id="setLimitBtn" class="limit-btn">
+                    Set Limit
+                </button>
+            </div>
+        </section>
+
+        <!-- Add Transaction -->
+        <section class="card">
+            <h2>Add Transaction</h2>
+
+            <form id="transactionForm">
+
+                <div class="form-group">
+                    <label for="itemName">Item Name</label>
+                    <input
+                        type="text"
+                        id="itemName"
+                        placeholder="e.g. Lunch"
+                    >
+                </div>
+
+                <div class="form-group">
+                    <label for="amount">Amount</label>
+                    <input
+                        type="number"
+                        id="amount"
+                        placeholder="e.g. 25000"
+                        min="1"
+                    >
+                </div>
+
+                <div class="form-group">
+                    <label for="category">Category</label>
+
+                    <select id="category">
+                        <option value="">Select category</option>
+                        <option value="Food">Food</option>
+                        <option value="Transport">Transport</option>
+                        <option value="Fun">Fun</option>
+                    </select>
+                </div>
+
+                <button type="submit" class="add-btn">
+                    + Add Expense
+                </button>
+
+            </form>
+        </section>
+
+        <!-- Transaction List -->
+        <section class="card">
+            <div class="section-header">
+                <h2>Transactions</h2>
+                <select id="sortOption">
+                    <option value="newest">Newest</option>
+                    <option value="amount-high">Amount: High to Low</option>
+                    <option value="amount-low">Amount: Low to High</option>
+                    <option value="category">Category</option>
+                </select>
+            </div>
+
+            <div id="transactionList" class="transaction-list">
+                <p class="empty-message">No transactions yet.</p>
+            </div>
+        </section>
+
+        <!-- Chart -->
+        <section class="card chart-card">
+            <h2>Spending Distribution</h2>
+
+            <div class="chart-container">
+                <canvas id="expenseChart"></canvas>
+            </div>
+        </section>
+
+    </main>
+
+    <script src="js/script.js"></script>
+
+</body>
+</html>
